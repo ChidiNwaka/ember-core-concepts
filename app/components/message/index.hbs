@@ -1,0 +1,23 @@
+<Message::Avatar @title="{{@username}}'s avatar" @initial={{substring @username end=1 start=0}}
+    @isActive={{@userIsActive}} class="{{if @isCurrentUser " current-user"}}" />
+
+<section>
+    <Message::Username @name={{@username}} @localTime={{@userLocalTime}} />
+
+    {{#if @person}} 
+        Hello {{@person.firstName}} {{@person.lastName}}
+    {{/if}}
+
+    {{#if @authors}}
+    <div>
+        <p>List of authors:</p>
+        <ul>
+            {{#each @authors as |author|}}
+            <li>{{author}}</li>
+            {{/each}}
+        </ul>
+    </div>
+    {{/if}}
+
+    {{yield}}
+</section>
